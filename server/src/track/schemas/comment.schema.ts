@@ -6,14 +6,11 @@ export type CommentDocument = HydratedDocument<Comment>;
 
 @Schema()
 export class Comment {
-  @Prop()
-  id: number;
-
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Track' })
   trackId: Track;
 
   @Prop()
-  userName: string;
+  username: string;
 
   @Prop()
   text: string;

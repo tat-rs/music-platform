@@ -7,9 +7,6 @@ export type TrackDocument = HydratedDocument<Track>;
 @Schema()
 export class Track {
   @Prop()
-  id: number;
-
-  @Prop()
   name: string;
 
   @Prop()

@@ -5,7 +5,7 @@ import { TrackModule } from './track/track.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://admin:<admin123321>@cluster0.dzmxpag.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://admin:admin123321@cluster0.dzmxpag.mongodb.net/?retryWrites=true&w=majority',
     ),
     TrackModule,
   ],
