@@ -7,8 +7,9 @@ import {
   Param,
   UseInterceptors,
 } from '@nestjs/common';
-import { UploadedFiles } from '@nestjs/common/decorators';
+import { Query, UploadedFiles } from '@nestjs/common/decorators';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
+import { query } from 'express';
 import { ObjectId } from 'mongoose';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { CreateTrackDto } from './dto/create-track.dto';
@@ -38,8 +39,13 @@ export class TrackController {
   }
 
   @Get()
-  getAll() {
-    return this.trackService.getAll();
+  getAll(@Query('count') count: number, @Query('offset') offset: number) {
+    return this.trackService.getAll(count, offset);
+  }
+
+  @Get('search')
+  search(@Query('category') category: string, @Query('query') query: string) {
+    return this.trackService.search(category, query);
   }
 
   @Get(':id')
