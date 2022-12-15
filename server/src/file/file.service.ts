@@ -30,5 +30,15 @@ export class FileService {
     }
   }
 
-  /* removeFile() {} */
+  removeFile(fileName: string) {
+    try {
+      const filePath = path.resolve(__dirname, '..', 'static');
+      fs.unlink(`${filePath}/${fileName}`, (err) => {
+        if (err) throw err;
+        console.log('Файл удален');
+      });
+    } catch (error) {
+      console.log('не удалось удалить файл');
+    }
+  }
 }

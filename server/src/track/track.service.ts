@@ -39,6 +39,10 @@ export class TrackService {
 
   async delete(id: ObjectId): Promise<Track> {
     const track = await this.trackModel.findByIdAndDelete(id);
+    if ('audio' || 'picture' in track) {
+      this.fileService.removeFile(track.audio);
+      this.fileService.removeFile(track.picture);
+    }
     return track;
   }
 
