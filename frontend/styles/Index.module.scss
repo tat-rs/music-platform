@@ -1,0 +1,23 @@
+.page {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+  }
+
+  &__text {
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 68px;
+    line-height: 75px;
+    text-align: center;
+  }
+}
