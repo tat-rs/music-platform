@@ -1,4 +1,4 @@
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar";
 
 interface LayoutProps {
   children: React.ReactNode
@@ -8,7 +8,9 @@ export default function Layout({children}: LayoutProps) {
   return (
     <>
       <NavBar />
-      {children}
+      <main>
+        {children}
+      </main>
     </>
   )
 }
