@@ -1,9 +1,16 @@
-function NewMusic() {
+import StepLayout from "../../layout/StepLayout"
+
+function NewTrack() {
   return (
-    <h2>
-      Создать песню
-    </h2>
+    <section>
+      <h2>
+        Загрузка нового трека
+      </h2>
+      <StepLayout activeStep={1}>
+        <form></form>
+      </StepLayout>
+    </section>
   )
 }
 
-export default NewMusic
+export default NewTrack
