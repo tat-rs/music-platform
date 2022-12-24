@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormAddCover from "../../components/FormAddCover";
 import FormInfoTrack from "../../components/FormInfoTrack";
 import StepLayout from "../../layout/StepLayout";
 import styles from "../../styles/NewTrack.module.scss";
@@ -24,7 +25,7 @@ function NewTrack() {
           activeStep === 1 && <FormInfoTrack />
         }
         {
-          activeStep === 2 && <FormInfoTrack />
+          activeStep === 2 && <FormAddCover />
         }
         {
           activeStep === 3 && <FormInfoTrack/>
