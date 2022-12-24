@@ -21,7 +21,7 @@ function NewTrack() {
       <h2 className={styles.newTrack__title}>
         Загрузка нового трека
       </h2>
-      <StepLayout activeStep={activeStep}>
+      <StepLayout activeStep={activeStep} next={next} back={back}>
         {
           activeStep === 1 && <FormInfoTrack />
         }
@@ -33,22 +33,6 @@ function NewTrack() {
         }
         
       </StepLayout>
-      <div className={styles.newTrack__buttons}>
-        <button
-          className={styles.newTrack__button}
-          onClick={() => back()}
-          disabled={activeStep === 1}
-        >
-          Назад
-        </button>
-        <button
-          className={styles.newTrack__button}
-          onClick={() => next()}
-          disabled={activeStep === 3}
-        >
-          Далее
-        </button>
-      </div>
     </section>
   )
 }

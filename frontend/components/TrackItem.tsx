@@ -15,7 +15,7 @@ export default function TrackItem({track}: TrackItemProps) {
     <li className={styles.track} onClick={() => router.push(`tracks/${track._id}`)}>
       <div className={styles.track__main}>
         <button type="button" className={styles.track__button}>
-          <PlayIcon />
+          <PlayIcon width="28" height="28" />
         </button>
         <Image
             src={track.picture}

@@ -4,10 +4,12 @@ import { steps } from "../utils/constants";
 
 interface StepLayoutProps {
   activeStep: number,
+  next: () => void,
+  back: () => void,
   children: React.ReactNode,
 }
 
-function StepLayout({activeStep, children}: StepLayoutProps) {
+function StepLayout({activeStep, next, back, children}: StepLayoutProps) {
 
   return (
     <div className={styles.stepper}>
@@ -26,6 +28,22 @@ function StepLayout({activeStep, children}: StepLayoutProps) {
         }
       </ul>
       <div className={styles.stepper__container}>
+      <div className={styles.stepper__buttons}>
+        <button
+          className={styles.stepper__button}
+          onClick={() => back()}
+          disabled={activeStep === 1}
+        >
+          Назад
+        </button>
+        <button
+          className={styles.stepper__button}
+          onClick={() => next()}
+          disabled={activeStep === 3}
+        >
+          Далее
+        </button>
+      </div>
         {children}
       </div>
     </div>
