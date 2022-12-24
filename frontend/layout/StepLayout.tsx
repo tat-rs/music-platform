@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import styles from "../styles/StepLayout.module.scss";
+import { steps } from "../utils/constants";
 
 interface StepLayoutProps {
   activeStep: number,
@@ -7,21 +9,25 @@ interface StepLayoutProps {
 
 function StepLayout({activeStep, children}: StepLayoutProps) {
 
-  const steps = ['Информация о треке', 'Загрузка обложки', 'Загрузка трека'];
-
   return (
     <div className={styles.stepper}>
       <ul className={styles.stepper__list}>
         {
           steps.map((step, index) => (
             <li key={index} className={styles.stepper__item}>
-              <span className={styles.stepper__count}>{index + 1}</span>
-              <h3 className={styles.stepper__title}>{step}</h3>
+              <span className={classNames(styles.stepper__count,{
+                [styles.stepper__count_disabled]: activeStep !== index + 1
+              })}>{index + 1}</span>
+              <h3 className={classNames(styles.stepper__title,{
+                [styles.stepper__title_disabled]: activeStep !== index + 1
+              })}>{step}</h3>
             </li>
           ))
         }
       </ul>
-      {children}
+      <div className={styles.stepper__container}>
+        {children}
+      </div>
     </div>
   )
 }

@@ -1,14 +1,52 @@
-import StepLayout from "../../layout/StepLayout"
+import { useState } from "react";
+import FormInfoTrack from "../../components/FormInfoTrack";
+import StepLayout from "../../layout/StepLayout";
+import styles from "../../styles/NewTrack.module.scss";
 
 function NewTrack() {
+  const [activeStep, setActiveStep] = useState<number>(1);
+
+  function next() {
+    setActiveStep(state => state + 1)
+  }
+
+  function back() {
+    setActiveStep(state => state - 1)
+  }
+
   return (
-    <section>
-      <h2>
+    <section className={styles.newTrack}>
+      <h2 className={styles.newTrack__title}>
         Загрузка нового трека
       </h2>
-      <StepLayout activeStep={1}>
-        <form></form>
+      <StepLayout activeStep={activeStep}>
+        {
+          activeStep === 1 && <FormInfoTrack />
+        }
+        {
+          activeStep === 2 && <FormInfoTrack />
+        }
+        {
+          activeStep === 3 && <FormInfoTrack/>
+        }
+        
       </StepLayout>
+      <div className={styles.newTrack__buttons}>
+        <button
+          className={styles.newTrack__button}
+          onClick={() => back()}
+          disabled={activeStep === 1}
+        >
+          Назад
+        </button>
+        <button
+          className={styles.newTrack__button}
+          onClick={() => next()}
+          disabled={activeStep === 3}
+        >
+          Далее
+        </button>
+      </div>
     </section>
   )
 }

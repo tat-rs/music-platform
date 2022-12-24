@@ -1,14 +1,12 @@
 .stepper {
-  max-width: calc(100% - 80px);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 40px;
 
   &__list {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    margin: 0 auto;
+    margin: 0 auto 60px;
   }
 
   &__item {
@@ -33,23 +31,39 @@
   &__count {
     box-sizing: border-box;
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
     flex-shrink: 0;
-    padding: 6px;
-    font-size: 18px;
-    line-height: 20px;
+    padding: 8px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    line-height: 22px;
     font-weight: 400;
     text-align: center;
     color: #fff;
     background-color: #3a3aff;
     border-radius: 50%;
     z-index: 100;
+
+    &_disabled {
+      color: #f6f1f1;
+      background-color: #c6c6c6;
+    }
   }
 
   &__title {
-    font-size: 20px;
-    line-height: 22px;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: 400;
+
+    &_disabled {
+      color: #929292;
+    }
+  }
+
+  &__container {
+    max-width: 850px;
+    min-width: 200px;
+    margin: 0 auto;
   }
 }
