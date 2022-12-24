@@ -1,0 +1,52 @@
+.cover {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 45px 35px;
+
+  &__image {
+    margin-right: 55px;
+  }
+
+  &__container {
+    max-width: 300px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  &__input {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #3a3aff;
+    border-radius: 10px;
+    background-color: inherit;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    transition: all .2s;
+
+    &:hover {
+      background-color: #3a3aff;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
