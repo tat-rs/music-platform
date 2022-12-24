@@ -21,4 +21,11 @@ ul {
 #__next {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: 100%;
+  flex-grow: 1;
 }
