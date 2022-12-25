@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux/es/exports"
 import TrackList from "../components/TrackList"
+import { AppState } from "../store/store"
 
 const tracks = [
   {
@@ -60,6 +62,7 @@ const tracks = [
 ]
 
 export default function Tracks() {
+
   return (
     <TrackList tracks={tracks}/>
   )

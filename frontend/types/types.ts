@@ -14,3 +14,11 @@ export interface ITrackItem {
   audio: string;
   comments?: IComment[];
 }
+
+export interface PlayerState {
+  active: null | ITrackItem,
+  volume: number,
+  duration: number,
+  currentTime: number,
+  pause: boolean,
+}
