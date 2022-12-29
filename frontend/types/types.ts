@@ -20,5 +20,5 @@ export interface PlayerState {
   volume: number,
   duration: number,
   currentTime: number,
-  pause: boolean,
+  isPaused: boolean,
 }

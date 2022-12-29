@@ -4,10 +4,10 @@ import { ITrackItem, PlayerState } from "../../types/types";
 
 const initialState: PlayerState = {
   active: null,
-  volume: 0,
+  volume: 50,
   duration: 0,
   currentTime: 0,
-  pause: true,
+  isPaused: true,
 }
 
 export const playerSlice = createSlice({
@@ -15,10 +15,10 @@ export const playerSlice = createSlice({
   initialState,
   reducers: {
     play: (state) => {
-      state.pause = false;
+      state.isPaused = false;
     },
     pause: (state) => {
-      state.pause = true;
+      state.isPaused = true;
     },
     setCurrentTime: (state, action: PayloadAction<number>) => {
       state.currentTime = action.payload;

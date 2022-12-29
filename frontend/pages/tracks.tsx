@@ -1,6 +1,4 @@
-import { useSelector } from "react-redux/es/exports"
-import TrackList from "../components/TrackList"
-import { AppState } from "../store/store"
+import TrackList from "../components/TrackList";
 
 const tracks = [
   {
@@ -9,8 +7,8 @@ const tracks = [
     artist: "Люся Чеботина",
     text: "лалаллалала",
     listens: 0,
-    picture: 'https://images.unsplash.com/photo-1669666808012-3e120637a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-    audio: '',
+    picture: 'http://localhost:5000/picture/b068b713-4af6-4928-af7d-2f4942a0d465.jpg',
+    audio: 'http://localhost:5000/audio/e3ddad3a-fd12-417c-a6e0-aaa03fca48aa.mp3',
     comments: [
       {trackId: 1,
       username: 'Вася',
@@ -23,8 +21,8 @@ const tracks = [
     artist: "Люся Чеботина",
     text: "лалаллалала",
     listens: 0,
-    picture: 'https://images.unsplash.com/photo-1669666808012-3e120637a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-    audio: '',
+    picture: 'http://localhost:5000/picture/b068b713-4af6-4928-af7d-2f4942a0d465.jpg',
+    audio: 'http://localhost:5000/audio/e3ddad3a-fd12-417c-a6e0-aaa03fca48aa.mp3',
     comments: [
       {trackId: 2,
       username: 'Вася',
@@ -37,8 +35,8 @@ const tracks = [
     artist: "Люся Чеботина",
     text: "лалаллалала",
     listens: 0,
-    picture: 'https://images.unsplash.com/photo-1669666808012-3e120637a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-    audio: '',
+    picture: 'http://localhost:5000/picture/b068b713-4af6-4928-af7d-2f4942a0d465.jpg',
+    audio: 'http://localhost:5000/audio/e3ddad3a-fd12-417c-a6e0-aaa03fca48aa.mp3',
     comments: [
       {trackId: 3,
       username: 'Вася',
@@ -51,8 +49,8 @@ const tracks = [
     artist: "Люся Чеботина",
     text: "лалаллалала",
     listens: 0,
-    picture: 'https://images.unsplash.com/photo-1669666808012-3e120637a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-    audio: '',
+    picture: 'http://localhost:5000/picture/b068b713-4af6-4928-af7d-2f4942a0d465.jpg',
+    audio: 'http://localhost:5000/audio/e3ddad3a-fd12-417c-a6e0-aaa03fca48aa.mp3',
     comments: [
       {trackId: 4,
       username: 'Вася',

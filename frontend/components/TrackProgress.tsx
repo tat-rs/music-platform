@@ -1,13 +1,17 @@
+import React, { useEffect, useState } from "react";
 import styles from "../styles/TrackProgress.module.scss";
+import { convertTime } from "../utils/convertTime";
 
 interface TrackProgressProps {
-  min: number,
-  max: number,
+  left: number,
+  right: number,
   name: string,
-  children?: React.ReactNode
+  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void,
+  children?: React.ReactNode,
 }
 
-function TrackProgress({children, name, min, max}: TrackProgressProps) {
+function TrackProgress({children, name, left, right, onChange}: TrackProgressProps) {
+
   return (
     <div className={styles.progress}>
       {children}
@@ -17,12 +21,18 @@ function TrackProgress({children, name, min, max}: TrackProgressProps) {
           id={name}
           name={name}
           type="range"
-          min={min}
-          max={max}
+          min={0}
+          max={right}
+          value={left}
+          onChange={onChange}
         />
       </label>
       <span className={styles.progress__info}>
-        {`${min} / ${max}`}
+        {
+          name === "duration" ? (
+            `${convertTime(left)}/${convertTime(right)}`
+          ) : `${left} / ${right}`
+        }
       </span>
     </div>
   )
