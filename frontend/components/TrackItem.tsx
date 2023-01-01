@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import React, { useEffect } from "react";
 import { pause, play, setActive } from "../store/player/playerSlice";
+import { BASE_URL_API } from "../utils/constants";
 
 interface TrackItemProps {
   track: ITrackItem
@@ -46,7 +47,7 @@ export default function TrackItem({track}: TrackItemProps) {
           {icon}
         </button>
         <Image
-            src={track.picture}
+            src={`${BASE_URL_API}/${track.picture}`}
             alt={track.name}
             width={70}
             height={60}

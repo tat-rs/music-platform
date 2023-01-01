@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { play, pause, setVolume, setDuration, setCurrentTime } from "../store/player/playerSlice";
 import TrackProgress from "./TrackProgress";
 import React, { useEffect, useState } from "react";
+import { BASE_URL_API } from "../utils/constants";
 
 let audio: HTMLAudioElement;
 
@@ -31,7 +32,7 @@ function Player() {
 
   function setAudio() {
     if(active) {
-      audio.src = active.audio;
+      audio.src = `${BASE_URL_API}/${active.audio}`;
       audio.volume = volume / 100;
       audio.onloadeddata = () => {
         dispatch(setDuration(audio.duration))
@@ -83,7 +84,7 @@ function Player() {
           }
       </button>
         <Image
-            src={active?.picture}
+            src={`${BASE_URL_API}/${active?.picture}`}
             alt={active?.name}
             width={40}
             height={40}

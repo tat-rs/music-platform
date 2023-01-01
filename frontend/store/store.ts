@@ -1,11 +1,13 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import playerReducer from "./player/playerSlice";
+import tracksReducer from "./tracks/tracksSlice";
 
 const makeStore = () =>
   configureStore({
     reducer: {
-      player: playerReducer
+      player: playerReducer,
+      tracks: tracksReducer
     }
   });
 
