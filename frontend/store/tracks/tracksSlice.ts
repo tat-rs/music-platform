@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ITrackItem } from "../../types/types";
-import fetchTracks from "./thunk";
+import { fetchTracks } from "./thunk";
 
 interface tracksState {
   tracks: ITrackItem[],

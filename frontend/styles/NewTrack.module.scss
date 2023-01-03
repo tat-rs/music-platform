@@ -15,4 +15,28 @@
     text-align: center;
     margin-bottom: 35px;
   }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__submit {
+    width: 250px;
+    margin: 0 auto;
+    padding: 6px;
+    border: 1px solid #3a3aff;
+    border-radius: 10px;
+    font-size: 24px;
+    line-height: 28px;
+    transition: all .2s;
+
+    &:hover {
+      background-color: #3a3aff;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
 }

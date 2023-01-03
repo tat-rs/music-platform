@@ -1,16 +1,34 @@
+import React, { ChangeEvent } from "react";
 import styles from "../styles/FormInfoTrack.module.scss";
 
-function FormInfoTrack() {
+export type InputProps = {
+  value: string,
+  onChange: (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
+}
+
+export interface FormInfoTrackProps {
+  name: InputProps,
+  artist: InputProps,
+  text: InputProps,
+}
+
+function FormInfoTrack({
+  name,
+  artist,
+  text
+}: FormInfoTrackProps) {
 
   return (
-    <form className={styles.info} name="track-info">
-      <label className={styles.info__label} htmlFor="name-track">
+    <div className={styles.info}>
+      <label className={styles.info__label} htmlFor="name">
         <input
           className={styles.info__input}
-          id="name-track"
-          name="name-track"
+          id="name"
+          name="name"
           type="text"
           placeholder="Введите название трека"
+          value={name.value}
+          onChange={(evt) => name.onChange(evt)}
           />
       </label>
       <label className={styles.info__label} htmlFor="artist">
@@ -20,20 +38,23 @@ function FormInfoTrack() {
           name="artist"
           type="text"
           placeholder="Введите имя автора"
+          value={artist.value}
+          onChange={(evt) => artist.onChange(evt)}
         />
       </label>
-      <label className={styles.info__label} htmlFor="text-track">
+      <label className={styles.info__label} htmlFor="text">
         <textarea
           className={styles.info__input}
-          name="text-track"
-          id="text-track"
+          name="text"
+          id="text"
           cols={30}
           rows={5}
           placeholder="Введите текст песни"
+          value={text.value}
+          onChange={(evt) => text.onChange(evt)}
         />
       </label>
-      <button className={styles.info__submit}>Сохранить</button>
-    </form>
+    </div>
   )
 }
 

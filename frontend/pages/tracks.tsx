@@ -2,7 +2,7 @@ import { Context } from "next-redux-wrapper";
 import TrackList from "../components/TrackList";
 import { useAppSelector } from "../hooks/hooks";
 import { wrapper } from "../store/store";
-import fetchTracks from "../store/tracks/thunk";
+import { fetchTracks } from "../store/tracks/thunk";
 
 export default function Tracks() {
   const {tracks, isLoading, isError} = useAppSelector((state) => state.tracks)

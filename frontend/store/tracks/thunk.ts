@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ITrackItem } from '../../types/types';
 import { BASE_URL_API } from '../../utils/constants';
 
-const fetchTracks = createAsyncThunk(
+export const fetchTracks = createAsyncThunk(
   'tracks/fetchTracks',
   async (_, { rejectWithValue }) => {
     try {
@@ -15,4 +15,3 @@ const fetchTracks = createAsyncThunk(
   },
 );
 
-export default fetchTracks;

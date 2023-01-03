@@ -1,6 +1,9 @@
 .addTrack {
-  max-width: 300px;
-  margin: 0 auto;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 0 auto 60px;
+  display: flex;
+  gap: 30px;
 
   &__title {
     font-weight: 400;
