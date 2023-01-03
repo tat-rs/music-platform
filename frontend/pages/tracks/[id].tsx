@@ -1,28 +1,23 @@
 import Image from "next/image";
+import {GetServerSideProps} from "next";
 import styles from "../../styles/Track.module.scss";
 import LinkElement from "../../components/Link";
+import { ITrackItem } from "../../types/types";
+import { wrapper } from "../../store/store";
+import { Context } from "next-redux-wrapper";
+import axios from "axios";
+import { BASE_URL_API } from "../../utils/constants";
 
-const track = {
-  _id: 1,
-  name: "Письмо Санте",
-  artist: "Люся Чеботина",
-  text: "лалаллалала",
-  listens: 0,
-  picture: 'https://images.unsplash.com/photo-1669666808012-3e120637a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-  audio: '',
-  comments: [
-    {trackId: 1,
-    username: 'Вася',
-    text: "норм",}
-  ]
+export interface TrackProps {
+  track: ITrackItem
 }
 
-function Track() {
+function Track({track}: TrackProps) {
   return (
     <section className={styles.track}>
       <LinkElement link="/tracks" text="К списку"/>
       <div className={styles.track__container}>
-        <Image src={track.picture}
+        <Image src={`${BASE_URL_API}/${track.picture}`}
           alt={track.name}
           width={244}
           height={198}
@@ -31,7 +26,7 @@ function Track() {
         <div className={styles.track__desc}>
           <p className={styles.track__title_grey}>{`Исполнитель - ${track.artist}`}</p>
           <h2 className={styles.track__title}>{`Название трека - ${track.name}`}</h2>
-          <p className={styles.track__text}>{`Прослушиваний - ${track.comments.length}`}</p>
+          <p className={styles.track__text}>{`Прослушиваний - ${track?.comments?.length}`}</p>
         </div>
       </div>
       <h3 className={styles.track__title_grey}>Текст</h3>
@@ -63,3 +58,12 @@ function Track() {
 }
 
 export default Track;
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({params}) => {
+  const response = await axios.get('http://localhost:5000/tracks/' + params?.id)
+  return {
+      props: {
+          track: response.data
+      }
+  }
+});
