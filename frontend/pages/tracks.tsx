@@ -1,15 +1,11 @@
-import { useEffect } from "react";
+import { Context } from "next-redux-wrapper";
 import TrackList from "../components/TrackList";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import { useAppSelector } from "../hooks/hooks";
+import { wrapper } from "../store/store";
 import fetchTracks from "../store/tracks/thunk";
 
 export default function Tracks() {
-  const dispatch = useAppDispatch();
   const {tracks, isLoading, isError} = useAppSelector((state) => state.tracks)
-
-  useEffect(() => {
-    dispatch(fetchTracks())
-  }, []);
 
   if(isLoading) {
     return (
@@ -24,6 +20,14 @@ export default function Tracks() {
   }
 
   return (
-    <TrackList tracks={tracks}/>
+    tracks?.length > 0 && <TrackList tracks={tracks}/>
   )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (context: Context) => {
+  const dispatch = store.dispatch;
+  await dispatch(await fetchTracks());
+  return {
+    props: {}
+  }
+});

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HYDRATE } from 'next-redux-wrapper';
 import { ITrackItem, PlayerState } from "../../types/types";
 
 const initialState: PlayerState = {
@@ -33,15 +32,6 @@ export const playerSlice = createSlice({
       state.active = action.payload;
       state.duration = 0;
       state.currentTime = 0;
-    },
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', state, action.payload);
-      return {
-        ...state,
-        ...action.payload.subject,
-      };
     },
   },
 })

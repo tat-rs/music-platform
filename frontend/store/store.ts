@@ -1,14 +1,31 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
+import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { Action, AnyAction, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import playerReducer from "./player/playerSlice";
 import tracksReducer from "./tracks/tracksSlice";
 
+const combinedReducer: any = combineReducers({
+  player: playerReducer,
+  tracks: tracksReducer,
+});
+
+const rootReducer = (
+  state: ReturnType<typeof combinedReducer>,
+  action: AnyAction
+) => {
+  if (action.type === HYDRATE) {
+    const nextState = {
+      ...state, // use previous state
+      ...action.payload, // apply delta from hydration
+    };
+    return nextState;
+  } else {
+    return combinedReducer(state, action);
+  }
+};
+
 const makeStore = () =>
   configureStore({
-    reducer: {
-      player: playerReducer,
-      tracks: tracksReducer
-    }
+    reducer: rootReducer
   });
 
 export type AppStore = ReturnType<typeof makeStore>;
