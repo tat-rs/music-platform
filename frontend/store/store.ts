@@ -1,5 +1,5 @@
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
-import { Action, AnyAction, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
+import { Action, AnyAction, combineReducers, configureStore, ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
 import playerReducer from "./player/playerSlice";
 import tracksReducer from "./tracks/tracksSlice";
 
@@ -32,5 +32,6 @@ export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore['getState']>;
 export type AppDispatch = AppStore['dispatch'];
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action>;
+export type NextThunkDispatch = ThunkDispatch<AppState, void, AnyAction>
   
 export const wrapper = createWrapper<AppStore>(makeStore);
