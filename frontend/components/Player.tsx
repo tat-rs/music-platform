@@ -6,8 +6,9 @@ import VolumeIcon from "../assets/volume.svg";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { play, pause, setVolume, setDuration, setCurrentTime } from "../store/player/playerSlice";
 import TrackProgress from "./TrackProgress";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BASE_URL_API } from "../utils/constants";
+import { addListenTrack } from "../store/tracks/thunk";
 
 let audio: HTMLAudioElement;
 
@@ -25,8 +26,8 @@ function Player() {
   }, [active]);
   
   useEffect(() => {
-    if(currentTime === duration) {
-      dispatch(pause())
+    if(active && currentTime === duration) {
+      dispatch(pause());
     }
   }, [currentTime]);
 

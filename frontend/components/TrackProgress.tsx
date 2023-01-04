@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../styles/TrackProgress.module.scss";
 import { convertTime } from "../utils/convertTime";
 

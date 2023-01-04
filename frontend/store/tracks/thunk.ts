@@ -46,3 +46,15 @@ export const deleteTracks = createAsyncThunk<
     }
   },
 );
+
+export const addListenTrack = createAsyncThunk(
+  'tracks/addListenTrack',
+  async (id:number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post(`${BASE_URL_API}/tracks/listen/${id}`);
+      return data as ITrackItem;
+    } catch (err) {
+      return rejectWithValue(true);
+    }
+  },
+);

@@ -26,7 +26,7 @@ function Track({track}: TrackProps) {
         <div className={styles.track__desc}>
           <p className={styles.track__title_grey}>{`Исполнитель - ${track.artist}`}</p>
           <h2 className={styles.track__title}>{`Название трека - ${track.name}`}</h2>
-          <p className={styles.track__text}>{`Прослушиваний - ${track?.comments?.length}`}</p>
+          <p className={styles.track__text}>{`Прослушиваний - ${track?.listens}`}</p>
         </div>
       </div>
       <h3 className={styles.track__title_grey}>Текст</h3>

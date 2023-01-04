@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ITrackItem } from "../types/types";
@@ -9,14 +9,13 @@ import styles from "../styles/TrackItem.module.scss";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { pause, play, setActive } from "../store/player/playerSlice";
 import { BASE_URL_API } from "../utils/constants";
-import { deleteTracks } from "../store/tracks/thunk";
+import { addListenTrack, deleteTracks } from "../store/tracks/thunk";
 
 interface TrackItemProps {
   track: ITrackItem,
-  setTracksList: () => void
 }
 
-export default function TrackItem({track, setTracksList}: TrackItemProps) {
+export default function TrackItem({track}: TrackItemProps) {
   const router = useRouter();
   const { active, isPaused } = useAppSelector((state) => state.player);
   const dispatch = useAppDispatch();
@@ -26,6 +25,7 @@ export default function TrackItem({track, setTracksList}: TrackItemProps) {
     evt.stopPropagation();
     if(active?._id !== track._id) {
       dispatch(setActive(track));
+      dispatch(addListenTrack(track._id))
     } else {
       if(isPaused) {
         dispatch(play());
