@@ -32,3 +32,17 @@ export const postTracks = createAsyncThunk<
   },
 );
 
+export const deleteTracks = createAsyncThunk<
+  ITrackItem,
+  number
+>(
+  'tracks/deleteTracks',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`${BASE_URL_API}/tracks/${id}`);
+      return data as ITrackItem;
+    } catch (err) {
+      return rejectWithValue(true);
+    }
+  },
+);

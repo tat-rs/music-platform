@@ -9,6 +9,7 @@ import styles from "../styles/TrackItem.module.scss";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { pause, play, setActive } from "../store/player/playerSlice";
 import { BASE_URL_API } from "../utils/constants";
+import { deleteTracks } from "../store/tracks/thunk";
 
 interface TrackItemProps {
   track: ITrackItem,
@@ -32,6 +33,11 @@ export default function TrackItem({track, setTracksList}: TrackItemProps) {
         dispatch(pause());
       }
     }
+  }
+
+  async function deleteTrack(evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    evt.stopPropagation();
+    await dispatch(deleteTracks(track._id))
   }
 
   if(!active || active?._id !== track._id) {
@@ -60,7 +66,7 @@ export default function TrackItem({track, setTracksList}: TrackItemProps) {
           <p className={styles.track__artist}>{track.artist}</p>
         </div>
       </div>
-      <button className={styles.track__delete} type="button" >
+      <button className={styles.track__delete} type="button" onClick={(evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => deleteTrack(evt)}>
         <DeleteIcon width="18" height="18"/>
       </button>
         

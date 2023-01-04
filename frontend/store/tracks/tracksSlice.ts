@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ITrackItem } from "../../types/types";
-import { fetchTracks, postTracks } from "./thunk";
+import { deleteTracks, fetchTracks, postTracks } from "./thunk";
 
 interface tracksState {
   tracks: ITrackItem[],
@@ -33,16 +33,21 @@ export const tracksSlice = createSlice({
       state.tracks = [];
       state.isError = !!action.payload;
     }));
-    builder.addCase(postTracks.pending, (state) => {
-      state.isLoading = true;
-      state.isError = false;
-    });
     builder.addCase(postTracks.fulfilled, (state, action) => {
       const newData = [...state.tracks, action.payload]
       state.tracks = newData;
       state.isLoading = false;
     });
     builder.addCase(postTracks.rejected, ((state, action) => {
+      state.isLoading = false;
+      state.isError = !!action.payload;
+    }));
+    builder.addCase(deleteTracks.fulfilled, (state, action) => {
+      const newData = state.tracks.filter((track) => track._id !== action.payload._id)
+      state.tracks = newData;
+      state.isLoading = false;
+    });
+    builder.addCase(deleteTracks.rejected, ((state, action) => {
       state.isLoading = false;
       state.isError = !!action.payload;
     }));
