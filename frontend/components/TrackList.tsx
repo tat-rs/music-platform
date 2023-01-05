@@ -1,11 +1,11 @@
+import React, { useState } from "react";
 import TrackItem from "./TrackItem";
 import LinkElement from "./Link";
 import { ITrackItem } from "../types/types";
-import styles from "../styles/TrackList.module.scss";
-import React, { useState } from "react";
 import { categoryList } from "../utils/constants";
 import { useAppDispatch } from "../hooks/hooks";
 import { fetchTracks, searchTracks } from "../store/tracks/thunk";
+import styles from "../styles/TrackList.module.scss";
 
 interface TrackListProps {
   tracks: ITrackItem[],
