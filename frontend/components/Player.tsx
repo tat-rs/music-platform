@@ -1,14 +1,13 @@
+import React, { useEffect } from "react";
 import Image from "next/image";
-import styles from ".././styles/Player.module.scss";
+import TrackProgress from "./TrackProgress";
+import { BASE_URL_API } from "../utils/constants";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import { play, pause, setVolume, setDuration, setCurrentTime } from "../store/player/playerSlice";
 import PlayIcon from "../assets/play.svg";
 import PauseIcon from "../assets/pause.svg";
 import VolumeIcon from "../assets/volume.svg";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import { play, pause, setVolume, setDuration, setCurrentTime } from "../store/player/playerSlice";
-import TrackProgress from "./TrackProgress";
-import React, { useEffect } from "react";
-import { BASE_URL_API } from "../utils/constants";
-import { addListenTrack } from "../store/tracks/thunk";
+import styles from ".././styles/Player.module.scss";
 
 let audio: HTMLAudioElement;
 

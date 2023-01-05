@@ -1,8 +1,8 @@
-import { ITrackItem } from "../types/types";
-import TrackItem from "./TrackItem";
-import styles from "../styles/TrackList.module.scss";
-import LinkElement from "./Link";
 import { useState } from "react";
+import TrackItem from "./TrackItem";
+import LinkElement from "./Link";
+import { ITrackItem } from "../types/types";
+import styles from "../styles/TrackList.module.scss";
 
 interface TrackListProps {
   tracks: ITrackItem[],
@@ -19,7 +19,7 @@ export default function TrackList({tracks}: TrackListProps) {
       <ul className={styles.tracks__list}>
         {
           tracksList && tracksList.map((track) => (
-            <TrackItem track={track} key={track._id} setTracksList={setTracksList} />
+            <TrackItem track={track} key={track._id} />
           ))
         }
       </ul>

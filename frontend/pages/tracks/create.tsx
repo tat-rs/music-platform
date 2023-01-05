@@ -1,15 +1,13 @@
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import StepLayout from "../../layout/StepLayout";
 import FormAddCover from "../../components/FormAddCover";
 import FormAddTrack from "../../components/FormAddTrack";
 import FormInfoTrack from "../../components/FormInfoTrack";
 import { useAppDispatch } from "../../hooks/hooks";
 import { useInput } from "../../hooks/useInput";
-import StepLayout from "../../layout/StepLayout";
 import { postTracks } from "../../store/tracks/thunk";
 import styles from "../../styles/NewTrack.module.scss";
-import { BASE_URL_API } from "../../utils/constants";
 
 function NewTrack() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -81,7 +79,6 @@ function NewTrack() {
             )
           }
         </form>
-        
       </StepLayout>
     </section>
   )

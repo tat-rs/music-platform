@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ITrackItem } from "../types/types";
+import { BASE_URL_API } from "../utils/constants";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import { pause, play, setActive } from "../store/player/playerSlice";
+import { addListenTrack, deleteTracks } from "../store/tracks/thunk";
 import PlayIcon from "../assets/play.svg";
 import PauseIcon from "../assets/pause.svg";
 import DeleteIcon from "../assets/delete.svg";
 import styles from "../styles/TrackItem.module.scss";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import { pause, play, setActive } from "../store/player/playerSlice";
-import { BASE_URL_API } from "../utils/constants";
-import { addListenTrack, deleteTracks } from "../store/tracks/thunk";
 
 interface TrackItemProps {
   track: ITrackItem,

@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../styles/TrackProgress.module.scss";
 import { convertTime } from "../utils/convertTime";
+import styles from "../styles/TrackProgress.module.scss";
 
 interface TrackProgressProps {
   left: number,

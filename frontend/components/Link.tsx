@@ -1,5 +1,5 @@
-import styles from "../styles/LinkElement.module.scss";
 import Link from "next/link";
+import styles from "../styles/LinkElement.module.scss";
 
 interface LinkElementProps {
   link: string,

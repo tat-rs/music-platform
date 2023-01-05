@@ -1,12 +1,10 @@
+import axios from "axios";
 import Image from "next/image";
-import {GetServerSideProps} from "next";
-import styles from "../../styles/Track.module.scss";
 import LinkElement from "../../components/Link";
+import { BASE_URL_API } from "../../utils/constants";
 import { ITrackItem } from "../../types/types";
 import { wrapper } from "../../store/store";
-import { Context } from "next-redux-wrapper";
-import axios from "axios";
-import { BASE_URL_API } from "../../utils/constants";
+import styles from "../../styles/Track.module.scss";
 
 export interface TrackProps {
   track: ITrackItem

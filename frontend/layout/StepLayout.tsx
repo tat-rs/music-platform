@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import styles from "../styles/StepLayout.module.scss";
 import { steps } from "../utils/constants";
+import styles from "../styles/StepLayout.module.scss";
 
 interface StepLayoutProps {
   activeStep: number,
