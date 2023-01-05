@@ -8,6 +8,7 @@ export function useInput(initialState: string) {
 
   return {
     value,
-    onChange
+    onChange,
+    setValue
   }
 }

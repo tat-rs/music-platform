@@ -12,7 +12,7 @@ export interface ITrackItem {
   listens: number;
   picture: string;
   audio: string;
-  comments?: IComment[];
+  comments: IComment[];
 }
 
 export interface PlayerState {

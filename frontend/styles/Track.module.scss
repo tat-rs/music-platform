@@ -18,22 +18,23 @@
   }
 
   &__title {
-    margin: 0 0 15px 0;
-    font-size: 42px;
+    margin: 0 0 30px 0;
+    font-size: 32px;
     font-weight: 400;
-    line-height: 49px;
+    line-height: 36px;
 
     &_grey {
-      font-size: 38px;
-      line-height: 40px;
+      margin: 0 0 20px 0;
+      font-size: 30px;
+      line-height: 32px;
       color: #767070
     }
   }
 
   &__text {
-    font-weight: 100;
-    font-size: 32px;
-    line-height: 38px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
     margin-bottom: 20px;
   }
 
@@ -45,18 +46,20 @@
     margin-bottom: 20px;
   }
 
-  &__label {
-  }
-
   &__input {
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid #3a3aff;
     padding: 14px 25px;
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
     min-height: 50px;
+
+    &:focus {
+      border: 1px solid #3a3aff;
+      outline: 1px solid #3a3aff;
+    }
   }
 
   &__submit {
@@ -76,5 +79,25 @@
       color: #fff;
       cursor: pointer;
     }
+  }
+
+  &__comment {
+    width: 100%;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  &__userName {
+    font-size: 20px;
+    line-height: 22px;
+    color: #767070;
+    margin-bottom: 10px;
+  }
+
+  &__commentText {
+    font-size: 22px;
+    line-height: 24px;
   }
 }
