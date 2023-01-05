@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TrackItem from "./TrackItem";
 import LinkElement from "./Link";
 import { ITrackItem } from "../types/types";
@@ -9,7 +8,6 @@ interface TrackListProps {
 }
 
 export default function TrackList({tracks}: TrackListProps) {
-  const [tracksList, setTracksList] = useState(tracks || [])
   return (
     <section className={styles.tracks}>
       <div className={styles.tracks__heading}>
@@ -18,7 +16,7 @@ export default function TrackList({tracks}: TrackListProps) {
       </div>
       <ul className={styles.tracks__list}>
         {
-          tracksList && tracksList.map((track) => (
+          tracks && tracks.map((track) => (
             <TrackItem track={track} key={track._id} />
           ))
         }
