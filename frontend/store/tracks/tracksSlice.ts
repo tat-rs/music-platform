@@ -64,7 +64,6 @@ export const tracksSlice = createSlice({
         ...state.tracks.slice(currentIndex + 1)
       ];
       state.tracks = newArr;
-      console.log(action)
     });
   },
 })

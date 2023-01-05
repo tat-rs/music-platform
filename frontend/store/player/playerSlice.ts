@@ -3,7 +3,7 @@ import { ITrackItem, PlayerState } from "../../types/types";
 
 const initialState: PlayerState = {
   active: null,
-  volume: 50,
+  volume: 25,
   duration: 0,
   currentTime: 0,
   isPaused: true,
@@ -32,6 +32,7 @@ export const playerSlice = createSlice({
       state.active = action.payload;
       state.duration = 0;
       state.currentTime = 0;
+      state.isPaused = true;
     },
   },
 })

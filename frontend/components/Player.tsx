@@ -25,9 +25,9 @@ function Player() {
   }, [active]);
   
   useEffect(() => {
-    if(active && currentTime === duration) {
+    if(active && audio && audio.currentTime === audio.duration) {
       dispatch(pause());
-    }
+    } 
   }, [currentTime]);
 
   function setAudio() {
@@ -35,10 +35,10 @@ function Player() {
       audio.src = `${BASE_URL_API}/${active.audio}`;
       audio.volume = volume / 100;
       audio.onloadeddata = () => {
-        dispatch(setDuration(audio.duration))
+        dispatch(setDuration(audio.duration));
       }
       audio.ontimeupdate = () => {
-        dispatch(setCurrentTime(audio.currentTime))
+        dispatch(setCurrentTime(audio.currentTime));
       }
     }
   }
@@ -95,8 +95,8 @@ function Player() {
           <p className={styles.player__artist}>{active?.artist}</p>
         </div>
       </div>
-      <TrackProgress name="duration" left={currentTime} right={duration} onChange={(e) => changeDuration(e)} />
-      <TrackProgress name="volume" left={volume} right={100} onChange={(e) => changeVolume(e)} >
+      <TrackProgress name="duration" left={currentTime} right={duration} onChange={changeDuration} />
+      <TrackProgress name="volume" left={volume} right={100} onChange={changeVolume} >
         <VolumeIcon width="25" height="25" />
       </TrackProgress>
     </div>
