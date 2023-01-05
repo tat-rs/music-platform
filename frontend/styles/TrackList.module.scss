@@ -16,4 +16,26 @@
     font-size: 45px;
     font-weight: 400;
   }
+
+  &__search {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__query {
+    display: block;
+    flex-grow: 1;
+  }
+
+  &__select {
+
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    height: 100%;
+  }
 }

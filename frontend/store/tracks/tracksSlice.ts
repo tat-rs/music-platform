@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ITrackItem } from "../../types/types";
-import { addListenTrack, deleteTracks, fetchTracks, postTracks } from "./thunk";
+import { addListenTrack, deleteTracks, fetchTracks, postTracks, searchTracks } from "./thunk";
 
 interface tracksState {
   tracks: ITrackItem[],
@@ -64,6 +64,11 @@ export const tracksSlice = createSlice({
         ...state.tracks.slice(currentIndex + 1)
       ];
       state.tracks = newArr;
+    });
+    //searchTracks
+    builder.addCase(searchTracks.fulfilled, (state, action) => {
+      state.tracks = action.payload;
+      state.isLoading = false;
     });
   },
 })

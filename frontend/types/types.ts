@@ -22,3 +22,8 @@ export interface PlayerState {
   currentTime: number,
   isPaused: boolean,
 }
+
+export interface ISearch {
+  category: string,
+  query: string
+}

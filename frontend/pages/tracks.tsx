@@ -5,7 +5,7 @@ import { NextThunkDispatch, wrapper } from "../store/store";
 import { fetchTracks } from "../store/tracks/thunk";
 
 export default function Tracks() {
-  const {tracks, isLoading, isError} = useAppSelector((state) => state.tracks)
+  const {tracks, isLoading, isError} = useAppSelector((state) => state.tracks);
 
   if(isLoading) {
     return (
@@ -20,7 +20,11 @@ export default function Tracks() {
   }
 
   return (
-    tracks?.length > 0 && <TrackList tracks={tracks}/>
+    <>
+      {
+        tracks?.length > 0 && <TrackList tracks={tracks}/>
+      }
+    </>
   )
 }
 

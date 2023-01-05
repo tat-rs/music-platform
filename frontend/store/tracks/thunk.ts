@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { IComment, ITrackItem } from '../../types/types';
+import { IComment, ISearch, ITrackItem } from '../../types/types';
 import { BASE_URL_API } from '../../utils/constants';
 
 export const fetchTracks = createAsyncThunk<
@@ -53,6 +53,21 @@ export const addListenTrack = createAsyncThunk(
     try {
       const { data } = await axios.post(`${BASE_URL_API}/tracks/listen/${id}`);
       return data as ITrackItem;
+    } catch (err) {
+      return rejectWithValue(true);
+    }
+  },
+);
+
+export const searchTracks = createAsyncThunk<
+  ITrackItem[],
+  ISearch  
+>(
+  'tracks/searchTracks',
+  async (searchData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL_API}/tracks/search?category=${searchData.category}&query=${searchData.query}`);
+      return data as ITrackItem[];
     } catch (err) {
       return rejectWithValue(true);
     }
