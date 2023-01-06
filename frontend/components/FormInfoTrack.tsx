@@ -20,40 +20,43 @@ function FormInfoTrack({
 
   return (
     <div className={styles.info}>
-      <label className={styles.info__label} htmlFor="name">
+      <div className={styles.info__item}>
         <input
           className={styles.info__input}
           id="name"
           name="name"
           type="text"
-          placeholder="Введите название трека"
           value={name.value}
           onChange={(evt) => name.onChange(evt)}
-          />
-      </label>
-      <label className={styles.info__label} htmlFor="artist">
+          required
+        />
+        <label className={styles.info__label} htmlFor="name">Введите название трека</label>
+      </div>
+      <div className={styles.info__item}>
         <input
           className={styles.info__input}
           id="artist"
           name="artist"
           type="text"
-          placeholder="Введите имя автора"
           value={artist.value}
           onChange={(evt) => artist.onChange(evt)}
+          required
         />
-      </label>
-      <label className={styles.info__label} htmlFor="text">
+        <label className={styles.info__label} htmlFor="artist">Введите имя автора</label>
+      </div>
+      <div className={styles.info__item}>
         <textarea
           className={styles.info__input}
           name="text"
           id="text"
           cols={30}
           rows={5}
-          placeholder="Введите текст песни"
           value={text.value}
           onChange={(evt) => text.onChange(evt)}
+          required
         />
-      </label>
+        <label className={styles.info__label} htmlFor="text">Введите текст песни</label>
+      </div>
     </div>
   )
 }

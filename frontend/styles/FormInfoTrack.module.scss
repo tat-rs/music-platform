@@ -3,13 +3,27 @@
   display: flex;
   flex-direction: column;
 
-  &__label {
-    width: 100%;
-    margin-bottom: 10px;
+  &__item {
+    position: relative;
+    margin-bottom: 30px;
 
     &:last-of-type {
-      margin-bottom: 20px;
+      margin-bottom: 0
     }
+  }
+
+  &__label {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #b7b7b7;
+    pointer-events: none;
+    transform-origin: 0;
+    transition: all .3s;
   }
 
   &__input {
@@ -21,10 +35,19 @@
     border-radius: 10px;
     font-size: 16px;
     line-height: 24px;
+    appearance: none;
 
     &:focus {
       border: 1px solid #3a3aff;
       outline: 1px solid #3a3aff;
     }
   }
+}
+
+.info__input:focus + .info__label,
+.info__input:not(:focus):valid + .info__label
+{
+  top: -28px;
+  color: #3a3aff;
+  transform: scale(.85);
 }
