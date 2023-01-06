@@ -66,10 +66,18 @@ export const tracksSlice = createSlice({
       state.tracks = newArr;
     });
     //searchTracks
+    builder.addCase(searchTracks.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(searchTracks.fulfilled, (state, action) => {
       state.tracks = action.payload;
       state.isLoading = false;
     });
+    builder.addCase(searchTracks.rejected, ((state, action) => {
+      state.isLoading = false;
+      state.tracks = [];
+      state.isError = !!action.payload;
+    }));
   },
 })
 

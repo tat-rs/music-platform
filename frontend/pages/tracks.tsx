@@ -10,7 +10,7 @@ import { categoryList } from "../utils/constants";
 import styles from "../styles/Tracks.module.scss";
 
 export default function Tracks() {
-  const {tracks, isLoading, isError} = useAppSelector((state) => state.tracks);
+  const {tracks, isError} = useAppSelector((state) => state.tracks);
   const [searchValue, setSearchValue] = useState('');
   const [category, setCategory] = useState(categoryList[0]);
   const dispatch = useAppDispatch();
@@ -41,15 +41,9 @@ export default function Tracks() {
     });
   }
 
-  if(isLoading) {
-    return (
-      <p>Идет загрузка...</p>
-    )
-  }
-
   if(isError) {
     return (
-      <p>Произошла ошибка при загрузке треков...</p>
+      <p className={styles.tracks__answer}>Произошла ошибка при загрузке...</p>
     )
   }
 
@@ -88,10 +82,8 @@ export default function Tracks() {
         </label>
       </div>
       {
-        tracks?.length > 0 ? (
+        tracks && (
           <TrackList tracks={tracks} />
-        ) : (
-          <p className={styles.tracks__answer}>Треков нет...</p>
         )
       }
     </section>
