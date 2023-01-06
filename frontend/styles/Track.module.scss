@@ -79,6 +79,13 @@
       color: #fff;
       cursor: pointer;
     }
+
+    &:disabled {
+      color: #fff;
+      border-color: #cccbcb;
+      background-color: #cccbcb;
+      cursor: auto;
+    }
   }
 
   &__comment {

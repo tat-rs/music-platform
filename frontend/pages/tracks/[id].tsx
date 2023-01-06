@@ -59,7 +59,7 @@ function Track({serverTrack}: TrackProps) {
       <h3 className={styles.track__title_grey}>Текст</h3>
       <p className={styles.track__text}>{track.text}</p>
       <form className={styles.track__form} name="add-comment" onSubmit={onSubmit}>
-        <label htmlFor="user-name" className={styles.track__label}>
+        <div className={styles.track__item}>
           <input
             className={styles.track__input}
             id="user-name"
@@ -69,8 +69,9 @@ function Track({serverTrack}: TrackProps) {
             value={userName.value}
             onChange={userName.onChange}
           />
-        </label>
-        <label htmlFor="comment" className={styles.track__label}>
+          <label htmlFor="user-name" className={styles.track__label}></label>
+        </div>
+        <div className={styles.track__item}>
           <textarea
             className={styles.track__input}
             name="comment"
@@ -81,8 +82,15 @@ function Track({serverTrack}: TrackProps) {
             value={commentText.value}
             onChange={commentText.onChange}
           />
-        </label>
-        <button type="submit" className={styles.track__submit}>Отправить</button>
+          <label htmlFor="comment" className={styles.track__label}></label>
+        </div>
+        <button 
+          type="submit"
+          className={styles.track__submit}
+          disabled={commentText.value === "" || userName.value === ""}
+        >
+            Отправить
+        </button>
       </form>
       <ul className={styles.track__list}>
         {
