@@ -6,10 +6,11 @@ interface StepLayoutProps {
   activeStep: number,
   next: () => void,
   back: () => void,
+  isValid: boolean,
   children: React.ReactNode,
 }
 
-function StepLayout({activeStep, next, back, children}: StepLayoutProps) {
+function StepLayout({activeStep, next, back, isValid, children}: StepLayoutProps) {
 
   return (
     <div className={styles.stepper}>
@@ -39,7 +40,7 @@ function StepLayout({activeStep, next, back, children}: StepLayoutProps) {
         <button
           className={styles.stepper__button}
           onClick={() => next()}
-          disabled={activeStep === 3}
+          disabled={!isValid || activeStep === 3}
         >
           Далее
         </button>

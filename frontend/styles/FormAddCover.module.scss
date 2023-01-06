@@ -18,7 +18,15 @@
     font-size: 22px;
     line-height: 26px;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+  }
+
+  &__success {
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    color: #3a3aff;
+    margin-bottom: 30px;
   }
 
   &__input {

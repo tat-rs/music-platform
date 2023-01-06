@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useEffect, useRef } from "react";
 import styles from "../styles/FormInfoTrack.module.scss";
 
 export type InputProps = {
@@ -10,13 +10,23 @@ export interface FormInfoTrackProps {
   name: InputProps,
   artist: InputProps,
   text: InputProps,
+  setIsValid: (state: boolean) => void,
 }
 
 function FormInfoTrack({
   name,
   artist,
-  text
+  text,
+  setIsValid
 }: FormInfoTrackProps) {
+
+  useEffect(() => {
+    if(name.value !== "" && artist.value !== "" && text.value !== "") {
+      setIsValid(true)
+    } else {
+      setIsValid(false)
+    }
+  }, [name.value, artist.value, text.value, setIsValid]);
 
   return (
     <div className={styles.info}>

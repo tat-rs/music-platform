@@ -11,11 +11,12 @@ import styles from "../../styles/NewTrack.module.scss";
 
 function NewTrack() {
   const [activeStep, setActiveStep] = useState<number>(1);
+  const [isValid, setIsValid] = useState(false);
   const name = useInput('');
   const artist = useInput('');
   const text = useInput('');
-  const [picture, setPicture] = useState<File | string>('fileurl');
-  const [audio, setAudio] = useState<File | string>('fileurl');
+  const [picture, setPicture] = useState<File | string>('');
+  const [audio, setAudio] = useState<File | string>('');
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -29,20 +30,20 @@ function NewTrack() {
 
   function changePicture(evt: React.ChangeEvent<HTMLInputElement>) {
     if (!evt.target.files || evt.target.files.length === 0) {
-      // you can display the error to the user
-      console.error("Select a file");
+      setIsValid(false);
       return;
     }
-    setPicture(evt.target.files[0])
+    setPicture(evt.target.files[0]);
+    setIsValid(true);
   }
 
   function changeAudio(evt: React.ChangeEvent<HTMLInputElement>) {
     if (!evt.target.files || evt.target.files.length === 0) {
-      // you can display the error to the user
-      console.error("Select a file");
+      setIsValid(false);
       return;
     }
-    setAudio(evt.target.files[0])
+    setAudio(evt.target.files[0]);
+    setIsValid(true);
   }
 
   async function onSubmit(evt: React.ChangeEvent<HTMLFormElement>) {
@@ -62,19 +63,39 @@ function NewTrack() {
       <h2 className={styles.newTrack__title}>
         Загрузка нового трека
       </h2>
-      <StepLayout activeStep={activeStep} next={next} back={back}>
+      <StepLayout activeStep={activeStep} next={next} back={back} isValid={isValid}>
         <form id="addTrack" name='addTrack' className={styles.newTrack__form} onSubmit={onSubmit}>
           {
-            activeStep === 1 && <FormInfoTrack name={name} artist={artist} text={text} />
+            activeStep === 1 && (
+              <FormInfoTrack
+                name={name}
+                artist={artist}
+                text={text}
+                setIsValid={setIsValid} />
+            )
           }
           {
-            activeStep === 2 && <FormAddCover changePicture={(evt: React.ChangeEvent<HTMLInputElement> ) => changePicture(evt)} />
+            activeStep === 2 && (
+              <FormAddCover
+                picture={picture}
+                changePicture={changePicture}
+                isValid={isValid}
+                setIsValid={setIsValid} />
+              )
           }
           {
             activeStep === 3 && (
               <>
-                <FormAddTrack changeAudio={(evt: React.ChangeEvent<HTMLInputElement> ) => changeAudio(evt)} />
-                <button className={styles.newTrack__submit} type="submit">Сохранить трек</button>
+                <FormAddTrack
+                  audio={audio}
+                  changeAudio={changeAudio}
+                  isValid={isValid}
+                  setIsValid={setIsValid} />
+                {
+                  isValid && (
+                    <button className={styles.newTrack__submit} type="submit">Сохранить трек</button>
+                  )
+                }
               </>
             )
           }

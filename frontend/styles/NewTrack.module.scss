@@ -38,5 +38,12 @@
       color: #fff;
       cursor: pointer;
     }
+
+    &:disabled {
+      border: 1px solid #a7a7a7;
+      background-color: #a7a7a7;
+      color: #fff;
+      cursor: auto;
+    }
   }
 }

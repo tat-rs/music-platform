@@ -1,24 +1,40 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/FormAddCover.module.scss";
 
 interface FormAddCoverProps {
-  changePicture: (evt: React.ChangeEvent<HTMLInputElement>) => void
+  picture: File | string,
+  changePicture: (evt: React.ChangeEvent<HTMLInputElement>) => void,
+  isValid: boolean,
+  setIsValid: (state: boolean) => void,
 }
 
-function FormAddCover({changePicture}: FormAddCoverProps) {
+function FormAddCover({picture, changePicture, isValid, setIsValid}: FormAddCoverProps) {
+
+  useEffect(() => {
+    if(picture === '') {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [picture])
 
   return (
     <div className={styles.cover}>
       <Image
-        src='https://images.unsplash.com/photo-1669666808012-3e120637a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+        src='/question.jpg'
         alt="Обложка"
         width={244}
-        height={198}
+        height={190}
         className={styles.cover__image}
       />
       <div className={styles.cover__container}>
         <h3 className={styles.cover__title}>Загрузите обложку трека</h3>
+        {
+          isValid && (
+            <p className={styles.cover__success}>Файл добавлен!</p>
+          )
+        }
         <input
           className={styles.cover__input}
           id="cover"
