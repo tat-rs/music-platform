@@ -1,10 +1,11 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "music platform server",
+  "author": "Tatiana Roslyakova",
   "private": true,
   "license": "UNLICENSED",
+  "main": "src/main.ts",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
