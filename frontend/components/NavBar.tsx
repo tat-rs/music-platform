@@ -9,9 +9,6 @@ export default function NavBar() {
           <Link href="/" className={styles.nav__link}>Главная</Link>
         </li>
         <li className={styles.nav__item}>
-          <Link href="/albums" className={styles.nav__link}>Альбомы</Link>
-        </li>
-        <li className={styles.nav__item}>
           <Link href="/tracks" className={styles.nav__link}>Треки</Link>
         </li>
       </ul>

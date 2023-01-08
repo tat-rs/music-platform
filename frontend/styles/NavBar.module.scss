@@ -9,15 +9,24 @@
   background-color: #3a3aff;
 
   &__list {
-    min-width: 40%;
+    width: max-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__item:not(:last-of-type) {
+    margin-right: 60px;
   }
 
   &__link {
     font-size: 20px;
     color: #fff;
     text-decoration: none;
+    transition: color .3s;
+
+    &:hover {
+      color: #000;
+    }
   }
 }
