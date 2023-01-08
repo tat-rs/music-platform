@@ -1,5 +1,6 @@
 import { Context } from "next-redux-wrapper";
 import { useState } from "react";
+import MainLayout from "../layout/MainLayout";
 import LinkElement from "../components/Link";
 import TrackList from "../components/TrackList";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
@@ -48,7 +49,7 @@ export default function Tracks() {
   }
 
   return (
-    <>
+    <MainLayout>
       <section className={styles.tracks}>
       <div className={styles.tracks__heading}>
         <h2 className={styles.tracks__title}>Список треков</h2>
@@ -82,12 +83,14 @@ export default function Tracks() {
         </label>
       </div>
       {
-        tracks && (
+        tracks && !isError && tracks.length === 0 ? (
+          <p>По запросу ничего не найдено</p>
+        ) : (
           <TrackList tracks={tracks} />
         )
       }
     </section>
-    </>
+    </MainLayout>
   )
 }
 

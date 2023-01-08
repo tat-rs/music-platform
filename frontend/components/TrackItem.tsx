@@ -26,7 +26,7 @@ export default function TrackItem ({track}: TrackItemProps) {
     evt.stopPropagation();
     if(active?._id !== track._id) {
       dispatch(setActive(track));
-      dispatch(addListenTrack(track._id))
+      dispatch(addListenTrack(track._id));
     } else {
       if(isPaused) {
         dispatch(play());

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import MainLayout from "../../layout/MainLayout";
 import StepLayout from "../../layout/StepLayout";
 import FormAddCover from "../../components/FormAddCover";
 import FormAddTrack from "../../components/FormAddTrack";
@@ -59,7 +60,8 @@ function NewTrack() {
   }
 
   return (
-    <section className={styles.newTrack}>
+    <MainLayout>
+      <section className={styles.newTrack}>
       <h2 className={styles.newTrack__title}>
         Загрузка нового трека
       </h2>
@@ -102,6 +104,7 @@ function NewTrack() {
         </form>
       </StepLayout>
     </section>
+  </MainLayout>
   )
 }
 

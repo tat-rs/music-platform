@@ -21,7 +21,7 @@ export default function TrackList({tracks}: TrackListProps) {
   return (
     <ul>
       {
-        tracks && tracks.map((track) => (
+        tracks?.map((track) => (
           <TrackItem track={track} key={track._id} />
         ))
       }

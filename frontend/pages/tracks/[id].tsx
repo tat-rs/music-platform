@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import MainLayout from "../../layout/MainLayout";
 import LinkElement from "../../components/Link";
 import { BASE_URL_API } from "../../utils/constants";
 import { IComment, ITrackItem } from "../../types/types";
@@ -41,7 +42,8 @@ function Track({serverTrack}: TrackProps) {
   }
 
   return (
-    <section className={styles.track}>
+    <MainLayout title={`${track.name} - ${track.artist}`}>
+      <section className={styles.track}>
       <LinkElement link="/tracks" text="К списку"/>
       <div className={styles.track__container}>
         <Image src={`${BASE_URL_API}/${track.picture}`}
@@ -105,6 +107,7 @@ function Track({serverTrack}: TrackProps) {
         }
       </ul>
     </section>
+  </MainLayout>
   )
 }
 
