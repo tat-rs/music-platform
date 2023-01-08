@@ -92,8 +92,8 @@ export default function Tracks() {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (context: Context) => {
-  const dispatch = store.dispatch as NextThunkDispatch
-  await dispatch(fetchTracks())
+  const dispatch = store.dispatch as NextThunkDispatch;
+  await dispatch(fetchTracks());
   return {
     props: {}
   }

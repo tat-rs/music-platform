@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Image from "next/image";
 import TrackProgress from "./TrackProgress";
 import { BASE_URL_API } from "../utils/constants";
@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { play, pause, setVolume, setDuration, setCurrentTime } from "../store/player/playerSlice";
 import PlayIcon from "../assets/play.svg";
 import PauseIcon from "../assets/pause.svg";
-import VolumeIcon from "../assets/volume.svg";
 import styles from ".././styles/Player.module.scss";
 
 let audio: HTMLAudioElement;
@@ -57,15 +56,15 @@ function Player() {
     }
   }
 
-  function changeVolume (evt: React.ChangeEvent<HTMLInputElement>) {
+  const changeVolume = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
     audio.volume = Number(evt.target.value) / 100;
     dispatch(setVolume(Number(evt.target.value)));
-  }
+  }, []);
 
-  function changeDuration (evt: React.ChangeEvent<HTMLInputElement>) {
+  const changeDuration = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
     audio.currentTime = Number(evt.target.value);
     dispatch(setCurrentTime(Number(evt.target.value)));
-  }
+  }, []);
 
   if(!active) {
     return null
@@ -100,9 +99,7 @@ function Player() {
         </div>
       </div>
       <TrackProgress name="duration" left={currentTime} right={duration} onChange={changeDuration} />
-      <TrackProgress name="volume" left={volume} right={100} onChange={changeVolume} >
-        <VolumeIcon width="25" height="25" />
-      </TrackProgress>
+      <TrackProgress name="volume" left={volume} right={100} onChange={changeVolume} />
     </div>
   )
 }

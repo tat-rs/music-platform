@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ITrackItem } from "../types/types";
@@ -15,7 +15,8 @@ interface TrackItemProps {
   track: ITrackItem,
 }
 
-export default function TrackItem({track}: TrackItemProps) {
+export default function TrackItem ({track}: TrackItemProps) {
+
   const router = useRouter();
   const { active, isPaused } = useAppSelector((state) => state.player);
   const dispatch = useAppDispatch();
@@ -37,7 +38,7 @@ export default function TrackItem({track}: TrackItemProps) {
 
   async function deleteTrack(evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     evt.stopPropagation();
-    await dispatch(deleteTracks(track._id))
+    await dispatch(deleteTracks(track._id));
   }
 
   if(!active || active?._id !== track._id) {

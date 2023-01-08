@@ -1,4 +1,5 @@
 import React from "react";
+import VolumeIcon from "../assets/volume.svg";
 import { convertTime } from "../utils/convertTime";
 import styles from "../styles/TrackProgress.module.scss";
 
@@ -7,14 +8,15 @@ interface TrackProgressProps {
   right: number,
   name: string,
   onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void,
-  children?: React.ReactNode,
 }
 
-function TrackProgress({children, name, left, right, onChange}: TrackProgressProps) {
+function TrackProgress({name, left, right, onChange}: TrackProgressProps) {
 
   return (
     <div className={styles.progress}>
-      {children}
+      {name === 'volume' && (
+        <VolumeIcon width="25" height="25" />
+      )}
       <label htmlFor={name} className={styles.progress__label}>
         <input
           className={styles.progress__label}
