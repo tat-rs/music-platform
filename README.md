@@ -48,10 +48,3 @@ __4. Запустить сервер__
 Перейти в папку "server"
 
 `npm run start`
-
-## Ссылка на сайт
-
-Ссылка на сайт: <a href="https://music-platform-eight.vercel.app/" target="_blank" rel="noopener">https://music-platform-eight.vercel.app</a>
-
-
-Ссылка на сервер: <a href="https://music-platform-server.vercel.app/" target="_blank" rel="noopener">https://music-platform-server.vercel.app</a>
