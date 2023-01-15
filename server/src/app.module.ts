@@ -12,12 +12,8 @@ import { TrackModule } from './track/track.module';
     ServeStaticModule.forRoot({
       rootPath: path.resolve(__dirname, 'static'),
     }),
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URL'),
-      }),
-      inject: [ConfigService],
+    MongooseModule.forRoot(process.env.MONGODB_URL, {
+      useFindAndModify: false,
     }),
     TrackModule,
     FileModule,
