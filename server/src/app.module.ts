@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
@@ -12,8 +12,12 @@ import { TrackModule } from './track/track.module';
     ServeStaticModule.forRoot({
       rootPath: path.resolve(__dirname, 'static'),
     }),
-    MongooseModule.forRoot(process.env.MONGODB_URL, {
-      useFindAndModify: false,
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async () => ({
+        uri: process.env.MONGODB_URL,
+      }),
+      inject: [ConfigService],
     }),
     TrackModule,
     FileModule,
