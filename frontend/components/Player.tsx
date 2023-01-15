@@ -15,17 +15,13 @@ function Player() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if(active) {
+    if(!audio) {
+      audio = new Audio();
+    } else if(active) {
       setAudio();
       playTrack();
     }
   }, [active]);
-
-  useEffect(() => {
-    if(!audio) {
-      audio = new Audio();
-    }
-  }, [])
   
   useEffect(() => {
     if(active && audio && audio.currentTime === audio.duration) {

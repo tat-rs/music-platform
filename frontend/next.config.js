@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'localhost']
+    domains: ['images.unsplash.com', 'localhost', 'music-platform-server.vercel.app']
   },
   webpack(config) {
     config.module.rules.push({
