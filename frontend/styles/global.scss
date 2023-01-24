@@ -4,7 +4,6 @@
 body {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: normal;
-  max-width: 100vw;
   min-height: 100vh;
   background-color: #edebeb;
 }
@@ -16,11 +15,6 @@ h1, h2, h3, p, ul {
 
 ul {
   list-style-type: none;
-}
-
-#__next {
-  max-width: 100%;
-  height: 100%;
 }
 
 main {
