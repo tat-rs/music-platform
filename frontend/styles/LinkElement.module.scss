@@ -21,3 +21,11 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 800px) {
+  .link {
+    max-width: 150px;
+    font-size: 16px;
+    padding: 6px;
+  }
+}

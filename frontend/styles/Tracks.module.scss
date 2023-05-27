@@ -18,7 +18,7 @@
   }
 
   &__search {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     margin-bottom: 20px;
     padding: 5px;
@@ -45,6 +45,8 @@
     padding: 15px;
     height: 100%;
     border: none;
+    font-size: 18px;
+    line-height: 20px;
 
     &:focus {
       border: none;
@@ -56,5 +58,22 @@
     font-size: 24px;
     line-height: 26px;
     text-align: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .tracks {
+    width: calc(100% - 80px);
+    padding: 15px;
+    
+    &__title {
+      font-size: 25px;
+    }
+
+    &__input {
+      padding: 8px;
+      font-size: 14px;
+    line-height: 20px;
+    }
   }
 }

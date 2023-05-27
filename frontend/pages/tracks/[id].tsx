@@ -114,7 +114,7 @@ function Track({serverTrack}: TrackProps) {
 export default Track;
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async ({params}) => {
-  const response = await axios.get('http://localhost:5000/tracks/' + params?.id)
+  const response = await axios.get(`${BASE_URL_API}/tracks/` + params?.id)
   return {
       props: {
         serverTrack: response.data
